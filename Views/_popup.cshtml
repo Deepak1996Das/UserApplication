@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor accesser
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup with Buttons</title>
+    <style>
+        /* Style for the overlay background */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        }
+
+        /* Style for the popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+            /* Style for the buttons */
+            .popup button {
+                margin-right: 10px;
+            }
+    </style>
+</head>
+<body>
+    @{
+        if (accesser.HttpContext.Session.GetString("ApplicationCookie") != null)
+        {
+                    <div class="overlay" id="overlay"></div>
+                    <div class="popup" id="popup">
+                        <p>Do you want to continue?</p>
+                        
+                        <a class="btn btn-primary" asp-action="CookiesSet" asp-controller="Account">Continue</a>
+                        <a asp-action="logout" asp-controller="Account" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <script>
+                      const fn=  () => {
+                        setInterval(() => {
+                          document.getElementById('overlay').style.display = 'block';
+                          document.getElementById('popup').style.display = 'block';
+                        }, 20000);
+                      }
+                        fn();
+                    </script>
+        }
+    }
+</body>
+</html>
+
