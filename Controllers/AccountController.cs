@@ -100,6 +100,7 @@ namespace UserApplication.Controllers
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Remove("ApplicationUser");
+            HttpContext.Session.Remove("ApplicationSessionStarted");
             await signInManager.SignOutAsync();
             return RedirectToAction( "Login");
         }
