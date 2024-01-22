@@ -29,9 +29,6 @@
 
 
 
-
-
-
 setTimeout(() => {
     console.log("Deepak");
     document.getElementById('overlay').style.display = 'block';
