@@ -105,7 +105,7 @@ namespace UserApplication.Controllers
             return RedirectToAction( "Login");
         }
         
-        public  IActionResult SessionSet() 
+        public  IActionResult CookiesSet() 
         {
             HttpContext.Session.SetString("ApplicationSessionStarted", DateTime.Now.ToString());
             return Redirect(Request.Headers["Referer"].ToString());

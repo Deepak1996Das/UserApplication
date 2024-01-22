@@ -41,13 +41,13 @@
 </head>
 <body>
     @{
-        if (accesser.HttpContext.Session.GetString("ApplicationCookie") != null)
+        if (accesser.HttpContext.Session.GetString("ApplicationSessionStarted") != null)
         {
                     <div class="overlay" id="overlay"></div>
                     <div class="popup" id="popup">
                         <p>Do you want to continue?</p>
 
-                <a class="btn btn-primary" asp-action="SessionSet" asp-controller="Account">Continue</a>
+                <a class="btn btn-primary" asp-action="CookiesSet" asp-controller="Account">Continue</a>
                         <a asp-action="logout" asp-controller="Account" class="btn btn-danger">Cancel</a>
                     </div>
                     <script>

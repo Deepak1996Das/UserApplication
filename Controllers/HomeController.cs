@@ -20,10 +20,7 @@ namespace UserApplication.Controllers
         public IActionResult Privacy()
         {
            
-            //if (HttpContext.Session.GetString("ApplicationCookie") != null)
-            //{
-            //    ViewBag.Data = HttpContext.Session.GetString("ApplicationUser")?.ToString();
-            //}
+            
             return View();
         }
 
